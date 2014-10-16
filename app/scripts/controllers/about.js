@@ -8,17 +8,13 @@
  * Controller of the appApp
  */
 angular.module('appApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('AboutCtrl', function ($scope,$http) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    $scope.myData = [{zipcode: "Moroni", address: 50},
-                        {zipcode: "Tiancum", address: 43},
-        {zipcode: "Jacob", address: 27},
-        {zipcode: "Nephi", address: 29},
-        {zipcode: "Enos", address: 34}];
+    $scope.myData = [{}];
     $scope.pagingOptions = {
         pageSizes: [10, 20, 100],
         pageSize: 10,
@@ -29,7 +25,7 @@ angular.module('appApp')
 
         enablePaging: true,
         showFooter: true,
-        rowHeight:20,
+        rowHeight:30,
         showFilter:true,
         enableColumnResize:true,
 
@@ -38,8 +34,37 @@ angular.module('appApp')
 
         columnDefs: [
             { displayName: "#",width: 60,cellTemplate: '<div align="right">{{row.rowIndex+startCount}}</div>'},
-            { field: 'zipcode', displayName: '郵便番号', width: 90 },
-            { field: 'address', displayName: '住所', width: '*', cellTemplate: '<div><a href="{{row.entity[\'link\']}}">{{row.entity[col.field]}}</a></div>' }
+            { field: 'userId', displayName: 'ユーザ', width: 90 },
+            { field: 'heartRate', displayName: '心拍数', width: 90 },
+            { field: 'assayDate', displayName: '測定日', width: '*', cellTemplate: '<div><a href="{{row.entity[\'link\']}}">{{row.entity[col.field]}}</a></div>' }
         ]
     };
+//         var $uri = 'http://192.168.0.23:8080/jersey2_sample/admin/getMessage';
+        var $uri ='http://54.64.73.55:8000/jersey2_sample/admin/getMessage';
+        //var $uri ='http://localhost:8080/jersey2_sample/admin/getMessage';
+        //var $uri ='data/sample.json';
+       // app.controller('testCtrl', function($scope, $http) {
+            $scope.doSearch = function() {
+                $http.get($uri).success(function(response) {
+                  // alert("success");
+                    $scope.myData = response.data;
+                }).error(function(response) {
+                  // alert("err");
+                });
+            };
+      //  });
   });
+
+//var $uri ='http://54.64.73.55:8000/jersey2_sample/admin/getMessage';
+//var $uri ='http://localhost:8080/jersey2_sample/admin/getMessage';
+//var $uri ='data/sample.json';
+/*app.controller('testCtrl', function($scope, $http) {
+    $scope.doSearch = function() {
+        $http.get($uri).success(function(response) {
+            //alert("success");
+            $scope.results = response.data;
+        }).error(function(response) {
+            //alert("err");
+        });
+    };
+});*/
