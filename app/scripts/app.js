@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngGrid',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angularCharts'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -28,6 +29,10 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/charts', {
+        templateUrl: 'views/charts.html',
+        controller: 'ChartsCtrl'
       })
       .otherwise({
         redirectTo: '/'
