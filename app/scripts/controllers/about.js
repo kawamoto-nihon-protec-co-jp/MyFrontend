@@ -8,7 +8,7 @@
  * Controller of the appApp
  */
 angular.module('appApp')
-  .controller('AboutCtrl', function ($scope,$http) {
+  .controller('AboutCtrl', function ($scope,$http,$rootScope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -33,10 +33,11 @@ angular.module('appApp')
         totalServerItems: 'size',
 
         columnDefs: [
-            { displayName: "#",width: 60,cellTemplate: '<div align="right">{{row.rowIndex+startCount}}</div>'},
+            { displayName: "#",width: 60,cellTemplate: '<div align="right"><a href="#/charts" ng-click="doChart(\'{{row.entity[col.field]}}\')">{{row.rowIndex+startCount}}</a></div>'},
             { field: 'userId', displayName: 'ユーザ', width: 90 },
             { field: 'heartRate', displayName: '心拍数', width: 90 },
-            { field: 'assayDate', displayName: '測定日', width: '*', cellTemplate: '<div><a href="#/charts" ng-click="doChart(\'{{row.entity[col.field]}}\')">{{row.entity[col.field]}}</a></div>' }
+            { field: 'assayDate', displayName: '測定日', width: '*', cellTemplate: '<div>{{row.entity[col.field]}}</div>' },
+            { field: 'assayDate', displayName: '測定場所', width: '*', cellTemplate: '<div><a href="#/map" ng-click="doChart(\'{{row.entity[col.field]}}\')">地図</a></div>' }
         ]
     };
     var $uri = 'http://54.64.73.55:8000/testapp/api/products/getMessage';
@@ -51,8 +52,10 @@ angular.module('appApp')
         getHealthData();
     };
     $scope.doChart = function (val) {
-        $scope.selData = val;
-    }
+        $rootScope.hoge = "line";
+//        $scope.selData = val;
+    };
+
     function getHealthData() {
         $http.get($uri).success(function(response) {
             // alert("success");

@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ngGrid',
     'ui.bootstrap',
-    'angularCharts'
+    'angularCharts',
+    'google-maps'.ns()
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -33,6 +34,10 @@ angular
       .when('/charts', {
         templateUrl: 'views/charts.html',
         controller: 'ChartsCtrl'
+      })
+      .when('/map', {
+        templateUrl: 'views/map.html',
+        controller: 'MapCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -8,7 +8,7 @@
  * Controller of the appApp
  */
 angular.module('appApp')
-    .controller('ChartsCtrl', function ($scope,$http) {
+    .controller('ChartsCtrl', function ($scope,$http,$rootScope) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
@@ -45,7 +45,7 @@ angular.module('appApp')
                 y: [351, 50, 25]
             }]
         };
-        $scope.chartType = 'bar';
+        $scope.chartType = $rootScope.hoge;//'bar';
         $scope.config1 = {
             labels: false,
             title: "Products",
