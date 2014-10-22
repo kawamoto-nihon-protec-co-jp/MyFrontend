@@ -8,11 +8,11 @@
  * Controller of the appApp
  */
 angular.module('appApp')
-    .controller('MapCtrl', function ($scope,$http) {
+    .controller('MapCtrl', function ($scope,$http,$rootScope) {
         $scope.map = {
             center: {
-                latitude: 35.681382,
-                longitude: 139.766084
+                latitude: $rootScope.gpsLatitude,
+                longitude: $rootScope.gpsLongitube
             },
             zoom: 14
         };
@@ -22,8 +22,8 @@ angular.module('appApp')
         $scope.marker = {
             id: 0,
             coords: {
-                latitude: 35.681382,
-                longitude: 139.766084
+                latitude: $rootScope.gpsLatitude,
+                longitude: $rootScope.gpsLongitube
             },
             options: { draggable: true },
             events: {

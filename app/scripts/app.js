@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'ngGrid',
     'ui.bootstrap',
-    'angularCharts',
+    'googlechart',
     'google-maps'.ns()
   ])
   .config(function ($routeProvider) {
