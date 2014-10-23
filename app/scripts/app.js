@@ -8,6 +8,7 @@
  *
  * Main module of the application.
  */
+var cnt = 0;
 angular
   .module('appApp', [
     'ngAnimate',

@@ -41,7 +41,7 @@ angular.module('appApp')
         ]
     };
     var $uri = 'http://54.64.73.55/testapp/api/products/getMessage';
-//        var $uri = 'http://localhost:8080/testapp/api/products/getMessage';
+//        var $uri = 'http://192.168.0.23:8080/testapp/api/products/getMessage';
     getHealthData();
 //    var $call_api = $http.get($uri).success(function(response) {
 //                        // alert("success");
