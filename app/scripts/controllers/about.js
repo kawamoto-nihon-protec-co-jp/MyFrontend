@@ -24,11 +24,11 @@ angular.module('appApp')
         data: 'myData',
 
         enablePaging: true,
-        showFooter: true,
+        showFooter: false,
         rowHeight:30,
         showFilter:true,
         enableColumnResize:true,
-
+        multiSelect:false,
         pagingOptions: $scope.pagingOptions,
         totalServerItems: 'size',
 

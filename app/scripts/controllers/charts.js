@@ -31,7 +31,7 @@ angular.module('appApp')
 //            {"c":[{"v":"10/23"},{"v":"62"},{"v":"73"}]}
 //        ]
 //        };
-    var $uri = 'http://54.64.73.55/testapp/api/products/getMessage';
+    var $uri = 'http://54.64.73.55/testapp/api/products/getChart';
 //        var $uri = 'http://192.168.0.23:8080/testapp/api/products/getChart';
 
         $http.get($uri).success(function (data) {
