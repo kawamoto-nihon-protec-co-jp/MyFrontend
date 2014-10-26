@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name appApp.controller:AboutCtrl
+ * @name appApp.controller:ChartsCtrl
  * @description
- * # AboutCtrl
+ * # ChartsCtrl
  * Controller of the appApp
  */
 angular.module('appApp')
@@ -15,31 +15,15 @@ angular.module('appApp')
             'Karma'
         ];
         $scope.chartData = [];
-//        $scope.charData =
-//
-//        {
-//            "cols": [
-//            {"id":"","label":"heartRate","pattern":"","type":"string"},
-//            {"id":"","label":"Aさん","pattern":"","type":"number"},
-//            {"id":"","label":"Bさん","pattern":"","type":"number"}
-//        ],
-//            "rows": [
-//            {"c":[{"v":"10/19"},{"v":"63"},{"v":"73"}]},
-//            {"c":[{"v":"10/20"},{"v":"71"},{"v":"68"}]},
-//            {"c":[{"v":"10/21"},{"v":"71"},{"v":"65"}]},
-//            {"c":[{"v":"10/22"},{"v":"61"},{"v":"69"}]},
-//            {"c":[{"v":"10/23"},{"v":"62"},{"v":"73"}]}
-//        ]
-//        };
+
     var $uri = 'http://54.64.73.55/testapp/api/products/getChart';
 //        var $uri = 'http://192.168.0.23:8080/testapp/api/products/getChart';
 
         $http.get($uri).success(function (data) {
             console.log("getHealthData");
             $scope.chartData = data;
-            $scope.testchart = createChart();
+            $scope.heartRateChart = createChart();
         }).error(function (response) {
-            // alert("err");
         });
 
         function createChart() {
