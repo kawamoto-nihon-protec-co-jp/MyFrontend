@@ -107,7 +107,6 @@ module.exports = function (grunt) {
           open: true,
           base: '<%= yeoman.dist %>'
         }
-      }
       },
       my_target: {
                 options: {
@@ -115,7 +114,7 @@ module.exports = function (grunt) {
                 }
       }
     },
-    // test/conf.js‚Ìİ’è‚É]‚Á‚ÄƒeƒXƒg‚ğÀs
+    // test/conf.jsã®è¨­å®šã«å¾“ã£ã¦ãƒ†ã‚¹ãƒˆã‚’å®Ÿè¡Œ
     protractor: {
         options: {
             keepAlive: true,
@@ -123,7 +122,7 @@ module.exports = function (grunt) {
         },
         my_target: {
             options: {
-                configFile: "test/conf.js"
+                configFile: "test/e2e.conf.js"
             }
         }
     },
@@ -131,21 +130,21 @@ module.exports = function (grunt) {
         options: {
             stdout: true
         },
-        // Selenium Server‚ğStop
+        // Selenium Serverã‚’Stop
         webdriverstop: {
             command: 'start http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer'
         },
-        // Selenium Server‚ğƒoƒbƒNƒOƒ‰ƒEƒ“ƒh‚ÅÀs
+        // Selenium Serverã‚’ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã§å®Ÿè¡Œ
         selenium: {
-            command: 'node_modules/.bin/webdriver-manager start',
+            command: 'node_modules/.bin/webdriver-manager start --standalone',
             options: {
                 stdout: false,
                 async: true
             }
         },
-        // Selenium Server‚ÌƒCƒ“ƒXƒg[ƒ‹‚¨‚æ‚ÑXV
+        // Selenium Serverã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãŠã‚ˆã³æ›´æ–°
         protractor_install: {
-            command: 'node_modules/.bin/webdriver-manager update'
+            command: 'node_modules/.bin/webdriver-manager update --standalone'
         }
     },
     // Make sure code styles are up to par and there are no obvious mistakes

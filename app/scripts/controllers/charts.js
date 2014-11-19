@@ -16,8 +16,8 @@ angular.module('appApp')
         ];
         $scope.chartData = [];
 
-    var $uri = 'http://54.64.73.55/testapp/api/products/getChart';
-//        var $uri = 'http://192.168.0.23:8080/testapp/api/products/getChart';
+    var $uri = 'http://54.64.73.55:8000/webservice/api/resource/getChartData';
+//        var $uri = 'http://192.168.0.23:8080/testapp/api/resource/getChartData';
 
         $http.get($uri).success(function (data) {
             console.log("getHealthData");

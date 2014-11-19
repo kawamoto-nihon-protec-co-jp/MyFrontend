@@ -9,8 +9,8 @@
  */
 angular.module('appApp')
   .controller('GridCtrl', function ($scope,$http,$rootScope) {
-    var $uri = 'http://54.64.73.55/testapp/api/products/getMessage';
-//    var $uri = 'http://192.168.0.23:8080/testapp/api/products/getMessage';
+    var $uri = 'http://54.64.73.55:8000/webservice/api/resource/getGridData';
+//    var $uri = 'http://192.168.0.23:8080/testapp/api/resource/getGridData';
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
