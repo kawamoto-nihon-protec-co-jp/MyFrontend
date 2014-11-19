@@ -18,7 +18,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-cookies/angular-cookies.js',
@@ -26,13 +28,24 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
+      'bower_components/ng-grid/build/ng-grid.js',
+      'bower_components/d3/d3.js',
+      'bower_components/angular-charts/dist/angular-charts.js',
+      'bower_components/lodash/dist/lodash.compat.js',
+      'bower_components/bluebird/js/browser/bluebird.js',
+      'bower_components/angular-google-maps/dist/angular-google-maps.js',
+      'bower_components/angular-google-chart/ng-google-chart.js',
+      'dist/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
-    exclude: [],
+    exclude: [
+      'test/spec/**/*_spec.js',
+    ],
 
     // web server port
     port: 8080,
@@ -45,15 +58,16 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: [
-      'PhantomJS'
-    ],
+    browsers: ['Chrome', 'Firefox', 'IE', 'PhantomJS'],
 
     // Which plugins to enable
-    plugins: [
-      'karma-phantomjs-launcher',
-      'karma-jasmine'
-    ],
+//    plugins: [
+//      'karma-chrome-launcher',
+//      'karma-firefox-launcher',
+//      'karma-ie-launcher',
+//      'karma-phantomjs-launcher',
+//      'karma-jasmine'
+//    ],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
@@ -71,5 +85,11 @@ module.exports = function(config) {
     // },
     // URL root prevent conflicts with the site root
     // urlRoot: '_karma_'
+    
+    reporters: ['progress', 'coverage'],
+
+    preprocessors: {
+      'test/spec/**/*.js' : 'coverage'
+    },
   });
 };

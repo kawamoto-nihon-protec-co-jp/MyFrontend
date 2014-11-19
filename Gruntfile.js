@@ -108,8 +108,46 @@ module.exports = function (grunt) {
           base: '<%= yeoman.dist %>'
         }
       }
+      },
+      my_target: {
+                options: {
+                    base: 'dist'
+                }
+      }
     },
-
+    // test/conf.jsの設定に従ってテストを実行
+    protractor: {
+        options: {
+            keepAlive: true,
+            noColor: false
+        },
+        my_target: {
+            options: {
+                configFile: "test/conf.js"
+            }
+        }
+    },
+    shell: {
+        options: {
+            stdout: true
+        },
+        // Selenium ServerをStop
+        webdriverstop: {
+            command: 'start http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer'
+        },
+        // Selenium Serverをバックグラウンドで実行
+        selenium: {
+            command: 'node_modules/.bin/webdriver-manager start',
+            options: {
+                stdout: false,
+                async: true
+            }
+        },
+        // Selenium Serverのインストールおよび更新
+        protractor_install: {
+            command: 'node_modules/.bin/webdriver-manager update'
+        }
+    },
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -356,7 +394,7 @@ module.exports = function (grunt) {
       }
     }
   });
-
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -376,6 +414,16 @@ module.exports = function (grunt) {
   grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
+  });
+
+  grunt.registerTask('e2e', 'DEPRECATED TASK. Use the "shell" task instead', function (target) {
+    grunt.task.run([
+    'shell:webdriverstop',
+    'build',
+    'shell:selenium',
+    'connect:dist',
+    'protractor:my_target'
+    ]);
   });
 
   grunt.registerTask('test', [
